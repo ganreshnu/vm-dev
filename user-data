@@ -54,7 +54,7 @@ packages:
 - zsh
 - zsh-doc
 - nodejs
-  #- build-essential
+- build-essential
   #- binutils-doc
   #- cpp-doc
   #- glibc-doc
