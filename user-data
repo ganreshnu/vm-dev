@@ -1,0 +1,80 @@
+#cloud-config
+
+write_files:
+- path: /var/lib/cloud/scripts/per-instance/config-local.sh
+  content: |
+    #!/bin/bash
+    echo '** config-local.sh **'
+    cat >> /etc/zsh/zshenv <<EOD
+
+    # BEGIN inserted from cloud-config
+    export XDG_CONFIG_HOME="\$HOME/.config"
+    export XDG_DATA_HOME="\$HOME/.local/share"
+    export XDG_STATE_HOME="\$HOME/.local/state"
+    export XDG_CACHE_HOME="\$HOME/.cache"
+    export ZDOTDIR="\$XDG_CONFIG_HOME/zsh"
+    # END inserted from cloud-config
+    EOD
+    cat >> /etc/zsh/zshrc <<EOD
+
+    # BEGIN inserted from cloud-config
+    [[ ! -d "\$XDG_CONFIG_HOME" ]] && mkdir -p "\$XDG_CONFIG_HOME"
+    [[ ! -d "\$XDG_DATA_HOME" ]] && mkdir -p "\$XDG_DATA_HOME"
+    [[ ! -d "\$XDG_STATE_HOME" ]] && mkdir -p "\$XDG_STATE_HOME"
+    [[ ! -d "\$XDG_CACHE_HOME" ]] && mkdir -p "\$XDG_CACHE_HOME"
+    # END inserted from cloud-config
+    EOD
+
+    mkdir -p /home/ubuntu
+    chown -R ubuntu:ubuntu /home/ubuntu
+    su -c 'mkdir -p "$XDG_CONFIG_HOME"' ubuntu
+    su -c 'git clone --quiet https://github.com/ganreshnu/config-zsh.git "$XDG_CONFIG_HOME/zsh"' ubuntu
+    su -c 'git clone --quiet https://github.com/ganreshnu/config-nvim.git "$XDG_CONFIG_HOME/nvim"' ubuntu
+    su -c 'git clone --quiet --depth=1 https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
+
+    curl -L -sS 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz' | tar xz --strip-components=1 -C /usr/local
+    update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
+    update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
+    update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 60
+
+  permissions: '0775'
+
+locale: en_US.UTF-8
+timezone: US/Central
+
+apt:
+  sources:
+    nodesource.list:
+      source: 'deb http://deb.nodesource.com/node_16.x $RELEASE main'
+      keyid: '9fd3b784bc1c6fc31a8a0a1c1655a0ab68576280'
+
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+- zsh
+- zsh-doc
+- nodejs
+  #- build-essential
+  #- binutils-doc
+  #- cpp-doc
+  #- glibc-doc
+  #- gcc-9-doc
+  #- gcc-doc
+  #- libstdc++-9-doc
+  #- make-doc
+  #- gdb
+  #- gdb-doc
+  #- autoconf
+  #- autoconf-doc
+  #- automake
+  #- libtool
+  #- libtool-doc
+
+#power_state:
+#  mode: reboot
+
+system_info:
+  default_user:
+    shell: /usr/bin/zsh
+    no_create_home: true
+
