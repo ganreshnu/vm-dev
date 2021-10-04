@@ -17,3 +17,11 @@ cloud-init modules --mode config
 cloud-init modules --mode final
 ```
 
+### Linux
+```
+lxc launch -c user.user-data="$(wget -qO - https://raw.githubusercontent.com/ganreshnu/vm-dev/master/user-data)" ubuntu:lts dev
+lxc exec dev -- login -f ubuntu
+```
+
+### Other
+multipass should work fine.
