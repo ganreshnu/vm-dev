@@ -29,6 +29,7 @@ write_files:
     chown -R ubuntu:ubuntu /home/ubuntu
     su -c 'mkdir -p "$XDG_CONFIG_HOME"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-zsh.git "$XDG_CONFIG_HOME/zsh"' ubuntu
+		su -c 'git clone --quiet https://github.com/ganreshnu/config-tmux.git "$XDG_CONFIG_HOME/tmux"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-nvim.git "$XDG_CONFIG_HOME/nvim"' ubuntu
     su -c 'git clone --quiet --depth=1 https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
 
