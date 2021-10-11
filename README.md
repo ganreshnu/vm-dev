@@ -1,9 +1,9 @@
-# Developer environment bootstrapped by a cloud-config
+# Development environment bootstrapped by a cloud-config
 
 ### Windows
 it really helps to update the wsl guest and "reboot" before running cloud-init:
 ```
-wsl.exe -u root -- apt-get update && apt-get -y upgrade && exit
+wsl.exe -u root -- sh -c "apt-get update && apt-get -y upgrade"
 wsl.exe --shutdown
 ```
 
