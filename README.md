@@ -11,10 +11,10 @@ then run the following as root in the container:
 ```
 export DEBUG_PROC_CMDLINE="ds=nocloud-net;s=https://raw.githubusercontent.com/ganreshnu/vm-dev/master/"
 cloud-init init --local \
-	&& cloud-init init \
-	&& cloud-init modules --mode config \
-	&& cloud-init modules --mode final \
-	&& exit
+  && cloud-init init \
+  && cloud-init modules --mode config \
+  && cloud-init modules --mode final \
+  && exit
 ```
 use the container with `wsl.exe -u ubuntu`.
 
