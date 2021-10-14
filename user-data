@@ -45,7 +45,7 @@ timezone: US/Central
 
 apt:
   conf: |
-		APT {
+    APT {
       Install-Suggests 'true';
     }
   sources:
