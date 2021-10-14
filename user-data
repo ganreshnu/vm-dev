@@ -44,6 +44,10 @@ locale: en_US.UTF-8
 timezone: US/Central
 
 apt:
+  conf: |
+		APT {
+      Install-Suggests 'true';
+    }
   sources:
     nodesource.list:
       source: 'deb http://deb.nodesource.com/node_16.x $RELEASE main'
