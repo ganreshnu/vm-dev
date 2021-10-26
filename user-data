@@ -63,6 +63,7 @@ packages:
 - zsh-doc
 - nodejs
 - build-essential
+- docker.io
   #- binutils-doc
   #- cpp-doc
   #- glibc-doc
