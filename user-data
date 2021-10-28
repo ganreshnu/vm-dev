@@ -32,6 +32,7 @@ write_files:
     su -c 'git clone --quiet https://github.com/ganreshnu/config-tmux.git "$XDG_CONFIG_HOME/tmux"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-nvim.git "$XDG_CONFIG_HOME/nvim"' ubuntu
     su -c 'git clone --quiet --depth=1 https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
+    su -c 'lxd init --auto' ubuntu
 
     curl -L -sS 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz' | tar xz --strip-components=1 -C /usr/local
     update-alternatives --install /usr/bin/ex ex /usr/local/bin/nvim 60
@@ -78,9 +79,6 @@ packages:
   #- automake
   #- libtool
   #- libtool-doc
-
-#power_state:
-#  mode: reboot
 
 system_info:
   default_user:
