@@ -87,3 +87,4 @@ system_info:
     shell: /usr/bin/zsh
     no_create_home: true
 
+# vim: ft=yaml
