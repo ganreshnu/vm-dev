@@ -67,6 +67,8 @@ packages:
 - nodejs
 - build-essential
 - docker.io
+- ripgrep
+- fd-find
   #- binutils-doc
   #- cpp-doc
   #- glibc-doc
