@@ -21,8 +21,8 @@ use the container with `wsl.exe -u ubuntu`.
 ### Linux
 ```
 lxc init ubuntu:lts dev
-wget -qO - http://raw.githubusercontent.com/ganreshnu/vm-dev/master/user-data | lxc config set dev user.userdata -
-lxc config set dev security.nesting = true
+wget -qO - http://raw.githubusercontent.com/ganreshnu/vm-dev/master/user-data | lxc config set dev user.user-data -
+lxc config set dev security.nesting=true
 lxc start dev
 lxc exec dev -- login -f ubuntu
 ```
