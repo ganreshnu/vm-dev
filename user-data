@@ -54,10 +54,6 @@ apt:
     APT {
       Install-Suggests 'true';
     }
-  sources:
-    nodesource.list:
-      source: 'deb http://deb.nodesource.com/node_16.x $RELEASE main'
-      keyid: '9fd3b784bc1c6fc31a8a0a1c1655a0ab68576280'
 
 package_upgrade: true
 package_reboot_if_required: true
