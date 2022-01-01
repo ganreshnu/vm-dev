@@ -20,11 +20,10 @@ use the container with `wsl.exe -u ubuntu`.
 
 ### Linux
 ```
-lxc launch -c user.user-data="$(wget -qO - https://raw.githubusercontent.com/ganreshnu/vm-dev/master/user-data)" ubuntu:lts dev
-lxc config device add dev home disk source=$HOME path=/mnt/Home
-lxc config set dev raw.idmap "both 1000 1000"
+lxc init ubuntu:lts dev
+wget -qO - http://raw.githubusercontent.com/ganreshnu/vm-dev/master/user-data | lxc config set dev user.userdata -
 lxc config set dev security.nesting = true
-lxc restart dev
+lxc start dev
 lxc exec dev -- login -f ubuntu
 ```
 
