@@ -17,8 +17,6 @@ write_files:
     EOD
     cat >> /etc/zsh/zshrc <<EOD
 
-    ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts
-
     # BEGIN inserted from cloud-config
     [[ ! -d "\$XDG_CONFIG_HOME" ]] && mkdir -p "\$XDG_CONFIG_HOME"
     [[ ! -d "\$XDG_DATA_HOME" ]] && mkdir -p "\$XDG_DATA_HOME"
@@ -26,6 +24,8 @@ write_files:
     [[ ! -d "\$XDG_CACHE_HOME" ]] && mkdir -p "\$XDG_CACHE_HOME"
     # END inserted from cloud-config
     EOD
+
+    ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts
 
     mkdir -p /home/ubuntu
     chown -R ubuntu:ubuntu /home/ubuntu

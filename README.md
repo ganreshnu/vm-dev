@@ -1,15 +1,10 @@
 # Development environment bootstrapped by a cloud-config
 
 ### Windows
-it really helps to update the wsl guest and "reboot" before running cloud-init:
-```
-wsl.exe -u root -- sh -c "apt-get update && apt-get -y upgrade"
-wsl.exe --shutdown
-```
 
-then run the following as root in the container:
+run as root in a newly installed Ubuntu container:
 ```
-export DEBUG_PROC_CMDLINE="ds=nocloud-net;s=https://raw.githubusercontent.com/ganreshnu/vm-dev/master/"
+export DEBUG_PROC_CMDLINE="ds=nocloud;seedfrom=/mnt/c/Users/username/vm-dev/"
 cloud-init init --local \
   && cloud-init init \
   && cloud-init modules --mode config \
