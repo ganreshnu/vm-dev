@@ -17,6 +17,8 @@ write_files:
     EOD
     cat >> /etc/zsh/zshrc <<EOD
 
+    ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts
+
     # BEGIN inserted from cloud-config
     [[ ! -d "\$XDG_CONFIG_HOME" ]] && mkdir -p "\$XDG_CONFIG_HOME"
     [[ ! -d "\$XDG_DATA_HOME" ]] && mkdir -p "\$XDG_DATA_HOME"
@@ -31,7 +33,7 @@ write_files:
     su -c 'git clone --quiet https://github.com/ganreshnu/config-zsh.git "$XDG_CONFIG_HOME/zsh"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-tmux.git "$XDG_CONFIG_HOME/tmux"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-nvim.git "$XDG_CONFIG_HOME/nvim"' ubuntu
-    su -c 'git clone --quiet --depth=1 https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
+    su -c 'git clone --quiet https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
     su -c 'lxd init --auto' ubuntu
 
     usermod -aG lxd,docker ubuntu
