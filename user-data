@@ -59,26 +59,11 @@ package_upgrade: true
 package_reboot_if_required: true
 packages:
 - zsh
-- zsh-doc
 - nodejs
 - build-essential
 - docker.io
 - ripgrep
 - fd-find
-  #- binutils-doc
-  #- cpp-doc
-  #- glibc-doc
-  #- gcc-9-doc
-  #- gcc-doc
-  #- libstdc++-9-doc
-  #- make-doc
-  #- gdb
-  #- gdb-doc
-  #- autoconf
-  #- autoconf-doc
-  #- automake
-  #- libtool
-  #- libtool-doc
 
 system_info:
   default_user:
