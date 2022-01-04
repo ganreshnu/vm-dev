@@ -21,7 +21,6 @@ wsl --import <name> "$Env:LOCALAPPDATA\Packages\<name>" Ubuntu-Updated.tar
 Open a root shell in the updated image.
 ```
 wsl -d Ubuntu -- login -f root
-
 ```
 
 Execute cloud-init passing in the local path to this repository.
