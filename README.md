@@ -1,8 +1,30 @@
 # Development environment bootstrapped by a cloud-config
 
 ### Windows
+Install the Ubuntu image.
+```
+wsl --install -d Ubuntu
+```
 
-run as root in a newly installed Ubuntu container:
+Update the image.
+```
+wsl -d Ubuntu -u root -- sh -c "apt-get -q update && apt-get -q -y upgrade"
+wsl --terminate Ubuntu
+```
+
+Optionally export/import an updated image in the current directory.
+```
+wsl --export Ubuntu Ubuntu-Updated.tar
+wsl --import <name> "$Env:LOCALAPPDATA\Packages\<name>" Ubuntu-Updated.tar
+```
+
+Open a root shell in the updated image.
+```
+wsl -d Ubuntu -- login -f root
+
+```
+
+Execute cloud-init passing in the local path to this repository.
 ```
 export DEBUG_PROC_CMDLINE="ds=nocloud;seedfrom=/mnt/c/Users/username/vm-dev/"
 cloud-init init --local \
@@ -11,7 +33,13 @@ cloud-init init --local \
   && cloud-init modules --mode final \
   && exit
 ```
-use the container with `wsl.exe -u ubuntu`.
+
+"Restart" the image and login.
+```
+wsl --terminate Ubuntu
+wsl -d Ubuntu -- login -f ubuntu
+```
+
 
 ### Linux
 ```
