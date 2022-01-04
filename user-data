@@ -33,8 +33,11 @@ write_files:
     su -c 'git clone --quiet https://github.com/ganreshnu/config-zsh.git "$XDG_CONFIG_HOME/zsh"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-tmux.git "$XDG_CONFIG_HOME/tmux"' ubuntu
     su -c 'git clone --quiet https://github.com/ganreshnu/config-nvim.git "$XDG_CONFIG_HOME/nvim"' ubuntu
+    su -c 'git -C /tmp clone --quiet https://github.com/ganreshnu/config-openssh.git && cp -r /tmp/config-openssh/. "$HOME/.ssh/" && rm -fr /tmp/config-openssh' ubuntu
+    su -c 'git clone --quiet https://github.com/ganreshnu/config-gnupg.git "$HOME/.gnupg"' ubuntu
+    su -c 'git -C "$HOME/.gnupg" config --local --replace-all status.showUntrackedFiles no' ubuntu
     su -c 'git clone --quiet https://github.com/wbthomason/packer.nvim "$XDG_DATA_HOME/nvim/site/pack/packer/start/packer.nvim"' ubuntu
-    su -c 'lxd init --auto' ubuntu
+    #su -c 'lxd init --auto' ubuntu
 
     usermod -aG lxd,docker ubuntu
 
