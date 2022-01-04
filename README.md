@@ -1,4 +1,4 @@
-# Development environment bootstrapped by a cloud-config
+# Development Environment
 
 ### Windows
 Install the Ubuntu image.
